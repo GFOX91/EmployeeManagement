@@ -8,12 +8,13 @@ public partial class EmployeeList
 
     protected override async Task OnInitializedAsync()
     {
-        var t = Task.Run(() => LoadEmployees());
-        await t;
+        await Task.Run(LoadEmployees);
     }
 
     private void LoadEmployees()
     {
+        Thread.Sleep(3000);
+
         Employee e1 = new Employee
         {
             Id = 1,
