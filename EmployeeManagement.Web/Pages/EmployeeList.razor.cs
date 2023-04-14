@@ -23,7 +23,7 @@ public partial class EmployeeList
             Email = "David@pragimtech.com",
             DateOfBirth = new DateTime(1980, 10, 5),
             Gender = Gender.Male,
-            Department = new Department { Id = 1, Name = "IT" },
+            DepartmentId = 1,
             PhotoPath = "images/john.png"
         };
 
@@ -35,7 +35,7 @@ public partial class EmployeeList
             Email = "Sam@pragimtech.com",
             DateOfBirth = new DateTime(1981, 12, 22),
             Gender = Gender.Male,
-            Department = new Department { Id = 2, Name = "HR" },
+            DepartmentId = 2,
             PhotoPath = "images/sam.jpg"
         };
 
@@ -47,7 +47,7 @@ public partial class EmployeeList
             Email = "mary@pragimtech.com",
             DateOfBirth = new DateTime(1979, 11, 11),
             Gender = Gender.Female,
-            Department = new Department { Id = 1, Name = "IT" },
+            DepartmentId = 1,
             PhotoPath = "images/mary.png"
         };
 
@@ -59,7 +59,7 @@ public partial class EmployeeList
             Email = "sara@pragimtech.com",
             DateOfBirth = new DateTime(1982, 9, 23),
             Gender = Gender.Female,
-            Department = new Department { Id = 3, Name = "Payroll" },
+            DepartmentId = 3,
             PhotoPath = "images/sara.png"
         };
 
