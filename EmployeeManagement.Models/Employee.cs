@@ -14,5 +14,5 @@ public class Employee
     public DateTime DateOfBirth { get; set; }
     public Gender Gender { get; set; }
     public Department Department { get; set; }
-    public string PhotPath { get; set; }
+    public string PhotoPath { get; set; }
 }
