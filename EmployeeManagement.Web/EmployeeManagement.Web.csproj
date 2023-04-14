@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Greg Fox\source\repos\EmployeeManagement\EmployeeManagement.Web\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Greg Fox\source\repos\EmployeeManagement\EmployeeManagement.Web\.editorconfig" />
+  </ItemGroup>
+
 </Project>
