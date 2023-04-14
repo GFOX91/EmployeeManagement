@@ -1,4 +1,5 @@
 using EmployeeManagement.Api.Data;
+using EmployeeManagement.Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement.Api
@@ -20,6 +21,8 @@ namespace EmployeeManagement.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.AddRepositories();
 
             var app = builder.Build();
 
