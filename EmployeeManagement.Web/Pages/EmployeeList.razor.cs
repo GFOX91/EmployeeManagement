@@ -64,8 +64,6 @@ public partial class EmployeeList
         };
 
         Employees = new List<Employee> { e1, e2, e3, e4 };
-
-        Employees = null;
     }
 }
 
