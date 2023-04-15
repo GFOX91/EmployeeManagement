@@ -1,8 +1,10 @@
 ﻿using EmployeeManagement.Api.Data;
+using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Api.Controllers;
 
+[ApiController]
 [Route("api/[controller]")]
 public class EmployeesController : ControllerBase
 {
@@ -43,6 +45,32 @@ public class EmployeesController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
         }        
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> CreateEmployee(Employee employee)
+    {
+        try
+        {
+            if (employee == null) 
+                return BadRequest();
+
+            var existingEmployee = await _employeeRepository.Get(employee.Email);
+
+            if (existingEmployee != null)
+            {
+                ModelState.AddModelError("email", "Employee email already in use");
+                return BadRequest(ModelState);
+            }
+
+            var createdEmployee = await _employeeRepository.Add(employee);
+
+            return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.Id });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 }
 

@@ -37,6 +37,12 @@ public class EmployeeRepository : IEmployeeRepository
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
+    public async Task<Employee> Get(string email)
+    {
+        return await _context.Employees
+            .FirstOrDefaultAsync(x => x.Email == email);
+    }
+
     public async Task<IEnumerable<Employee>> List()
     {
         return await _context.Employees.ToListAsync();
