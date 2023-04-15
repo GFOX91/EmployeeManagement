@@ -35,7 +35,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public async Task<Employee> Get(int id)
     {
-        return await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Employees
+            .Include(e => e.Department)
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<Employee> Get(string email)
