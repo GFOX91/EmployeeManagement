@@ -21,10 +21,5 @@ public partial class EmployeeDetails
     {
         Employee = await EmployeeService.Get(int.Parse(Id));
     }
-
-    protected void Mouse_Move(MouseEventArgs e)
-    {
-        Coordinates = $"X = {e.ClientX} Y = {e.ClientY}";
-    }
 }
 
