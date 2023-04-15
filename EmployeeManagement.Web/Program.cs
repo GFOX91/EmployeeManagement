@@ -1,3 +1,5 @@
+using EmployeeManagement.Web.Extensions;
+using EmployeeManagement.Web.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -12,6 +14,7 @@ namespace EmployeeManagement.Web
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            builder.AddHttpClients();
 
             var app = builder.Build();
 
