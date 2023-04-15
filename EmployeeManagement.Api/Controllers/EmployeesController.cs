@@ -72,5 +72,51 @@ public class EmployeesController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
         }
     }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> UpdateEmployee(int id, Employee employee)
+    {
+        try
+        {
+            if (id != employee.Id)
+                return BadRequest("Employee Id mismatch");
+
+            var employeeToUpdate = await _employeeRepository.Get(employee.Email);
+
+            if (employeeToUpdate == null)
+            {
+                return NotFound($"Employee with Id:{id} not found");
+            }
+
+            await _employeeRepository.Update(employee);
+
+            return AcceptedAtAction(nameof(GetEmployee), new { id = employee.Id });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<Employee>> UpdateEmployee(int id)
+    {
+        try
+        {
+        
+            var employeeToDelete = await _employeeRepository.Get(id);
+
+            if (employeeToDelete == null)
+            {
+                return NotFound($"Employee with Id:{id} not found");
+            }
+
+            return await _employeeRepository.Delete(id);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
 }
 

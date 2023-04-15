@@ -9,6 +9,6 @@ public interface IEmployeeRepository
     Task<Employee> Get(string email);
     Task<Employee> Add(Employee employee);
     Task<Employee> Update(Employee employee);
-    Task Delete(int id);
+    Task<Employee> Delete(int id);
 }
 

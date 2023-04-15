@@ -19,7 +19,7 @@ public class EmployeeRepository : IEmployeeRepository
         return result.Entity;
     }
 
-    public async Task Delete(int id)
+    public async Task<Employee> Delete(int id)
     {
         var employee = await _context.Employees
             .FirstOrDefaultAsync(x => x.Id == id);
@@ -29,6 +29,8 @@ public class EmployeeRepository : IEmployeeRepository
             _context.Employees .Remove(employee);
             await _context.SaveChangesAsync();
         }
+
+        return employee;
     }
 
     public async Task<Employee> Get(int id)
