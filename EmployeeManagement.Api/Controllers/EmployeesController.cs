@@ -103,7 +103,6 @@ public class EmployeesController : ControllerBase
     {
         try
         {
-        
             var employeeToDelete = await _employeeRepository.Get(id);
 
             if (employeeToDelete == null)
@@ -116,6 +115,27 @@ public class EmployeesController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("{search}")]
+    public async Task<ActionResult> Search(string name, Gender? gender)
+    {
+        try
+        {
+            var employees = await _employeeRepository.Search(name, gender);
+
+            if (employees.Any())
+            {
+                return Ok(employees);
+            }
+
+            return NotFound("No matching employees found");
+        }
+        catch (Exception)
+        {
+
+            throw;
         }
     }
 }

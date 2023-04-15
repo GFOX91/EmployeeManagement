@@ -35,19 +35,35 @@ public class EmployeeRepository : IEmployeeRepository
 
     public async Task<Employee> Get(int id)
     {
-        return await _context.Employees
-            .FirstOrDefaultAsync(x => x.Id == id);
+        return await _context.Employees.FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<Employee> Get(string email)
     {
-        return await _context.Employees
-            .FirstOrDefaultAsync(x => x.Email == email);
+        return await _context.Employees.FirstOrDefaultAsync(x => x.Email == email);
     }
 
     public async Task<IEnumerable<Employee>> List()
     {
         return await _context.Employees.ToListAsync();
+    }
+
+    public async Task<IEnumerable<Employee>> Search(string name, Gender? gender)
+    {
+        IQueryable<Employee> query = _context.Employees;
+
+        if (!string.IsNullOrWhiteSpace(name))
+        {
+            query = query.Where(e => e.FirstName.Contains(name)
+                                || e.LastName.Contains(name));
+        }
+
+        if (gender.HasValue)
+        {
+            query = query.Where(e => e.Gender == gender.Value);
+        }
+
+        return await query.ToListAsync();
     }
 
     public async Task<Employee> Update(Employee employee)
