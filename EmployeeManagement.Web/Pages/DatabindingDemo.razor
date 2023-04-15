@@ -1,0 +1,39 @@
+﻿@page "/databindingdemo"
+<h3>DatabindingDemoBase</h3>
+
+<h1>Data Binding Demo</h1>
+<hr />
+<h3>One Way Data Binding</h3>
+
+<div>
+    <b>Name :</b> @Name
+</div>
+
+<div>
+    <b>Name with salutation :</b> @(Gender == "Male" ? $"Mr. {Name}" : $"Miss. {Name}")
+</div>
+
+<hr />
+<h3>Two Way Data Binding</h3>
+<div>
+    <b>Name with salutation </b>:<input @bind="@Name" @bind:event="oninput"/>
+</div>
+
+<hr />
+<b>Colour:</b>
+<input @bind="Colour"/>
+
+<div @bind-style="Colour" @bind-style:event="onchange">
+    <h3>I change colour</h3>
+</div>
+
+<hr />
+<div>
+    <textarea @bind="Description" @bind:event="oninput" style="width:500px"/>
+</div>
+<div>
+    Count = @Description.Length
+</div>
+
+
+
