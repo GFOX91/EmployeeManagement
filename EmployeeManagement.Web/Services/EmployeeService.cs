@@ -24,5 +24,18 @@ public class EmployeeService : IEmployeeService
         }
         
     }
+
+    public async Task<Employee> Get(int id)
+    {
+        try
+        {
+            return await _httpClient.GetFromJsonAsync<Employee>($"employees/{id}");
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+
+    }
 }
 

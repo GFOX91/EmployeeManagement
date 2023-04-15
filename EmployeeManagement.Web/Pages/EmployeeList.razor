@@ -16,7 +16,7 @@ else
                         <h3>@employee.FullName</h3>
                         <img class="card-img-top imgThumbnail" src="@employee.PhotoPath" />
                         <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary m-1">View</a>
+                            <a href="@($"employeedetails/{employee.Id}")" class="btn btn-primary m-1">View</a>
                             <a href="#" class="btn btn-primary m-1">Edit</a>
                             <a href="#" class="btn btn-danger m-1">Delete</a>
                         </div>
