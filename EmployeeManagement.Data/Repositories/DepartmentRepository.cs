@@ -1,4 +1,5 @@
-﻿using EmployeeManagement.Models;
+﻿using EmployeeManagement.Data;
+using EmployeeManagement.Models;
 
 namespace EmployeeManagement.Api.Data;
 

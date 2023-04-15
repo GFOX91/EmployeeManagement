@@ -1,9 +1,12 @@
 ﻿using EmployeeManagement.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace EmployeeManagement.Api.Data;
-
+namespace EmployeeManagement.Data;
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -24,7 +27,7 @@ public class AppDbContext : DbContext
 
     private void SeedDepartments(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Department>().HasData(new[] 
+        modelBuilder.Entity<Department>().HasData(new[]
         {
             new Department { Id = 1, Name = "IT" },
             new Department { Id = 2, Name = "HR" },
@@ -34,8 +37,8 @@ public class AppDbContext : DbContext
     }
 
     private void SeedEmployees(ModelBuilder modelBuilder)
-    {            
-        modelBuilder.Entity<Employee>().HasData(new[] 
+    {
+        modelBuilder.Entity<Employee>().HasData(new[]
         {
                 new Employee
                 {
