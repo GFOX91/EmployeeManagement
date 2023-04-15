@@ -11,6 +11,9 @@ public partial class EmployeeDetails
 
     protected string Coordinates { get; set; }
 
+    protected string ButtonText { get; set; } = "Hide Footer";
+    protected string CssClass { get; set; }
+
     [Inject]
     public IEmployeeService EmployeeService { get; set; }
 
@@ -20,6 +23,20 @@ public partial class EmployeeDetails
     protected async  override Task OnInitializedAsync()
     {
         Employee = await EmployeeService.Get(int.Parse(Id));
+    }
+
+    protected void HideFooter_Click()
+    {
+        if (ButtonText == "Hide Footer")
+        {
+            ButtonText = "Show Footer";
+            CssClass = "d-none";
+        }
+        else
+        {
+            CssClass = null;
+            ButtonText = "Hide Footer";
+        }
     }
 }
 
