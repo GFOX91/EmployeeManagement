@@ -1,0 +1,14 @@
+﻿<div class="card m-3">
+    <div class="card-header">
+        <h3>@Employee.FullName</h3>
+        <img class="card-img-top imgThumbnail" src="@Employee.PhotoPath" />
+        @if (ShowFooter)
+        {
+            <div class="card-footer text-center">
+                <a href="@($"employeedetails/{Employee.Id}")" class="btn btn-primary m-1">View</a>
+                <a href="#" class="btn btn-primary m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delete</a>
+            </div>
+        }
+    </div>
+</div>
