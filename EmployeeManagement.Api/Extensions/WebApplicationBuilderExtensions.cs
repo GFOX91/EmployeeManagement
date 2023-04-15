@@ -6,8 +6,8 @@ public static class WebApplicationBuilderExtensions
 {
     public static void AddRepositories(this WebApplicationBuilder builder)
     {
-        builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-        builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+        builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+        builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
     }
 }
 
